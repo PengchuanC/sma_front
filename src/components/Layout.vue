@@ -31,14 +31,19 @@
     }
 </script>
 
-<style scoped>
+<style scoped lang="less">
+    @width: 60vw;
+
     .layout {
+        overflow-x: hidden;
     }
 
     .content {
         position: relative;
-        width: 60vw;
-        left: 20vw;
+        width: @width;
+        left: 50%;
+        min-width: 1000px;
+        transform: translate(-50%, 0);
         overflow-y: auto;
     }
 

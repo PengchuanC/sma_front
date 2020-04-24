@@ -75,7 +75,7 @@
         transform: translate(-50%, 50%);
         border-radius: 5px;
         padding: 20px;
-        background-color: rgba(239, 239, 239, 1);
+        background-color: rgba(239, 239, 239, 0.8);
     }
     .login .title {
         font-size: 36px;

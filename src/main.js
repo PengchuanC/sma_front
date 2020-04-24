@@ -9,7 +9,7 @@ import { Message } from 'at-ui'
 
 Vue.use(less)
 
-axios.defaults.baseURL = "http://localhost:8000/"
+axios.defaults.baseURL = "http://10.170.236.75:8000/"
 Vue.prototype.http = axios
 Vue.prototype.$Message = Message
 Vue.prototype.$token = ''
