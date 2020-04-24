@@ -10,8 +10,8 @@
             <tr v-for="(row, i) in data" :key="i" :class="row.id? row.id % 2 ===0? '': 'light': 'grey'">
                 <td class="td1">{{row.id}}</td>
                 <td class="td2">{{row.name}}</td>
-                <td class="td3">{{row.scale}}</td>
-                <td class="td4">{{`${row.ratio}%`}}</td>
+                <td class="td3">{{formatNumber(row.scale)}}</td>
+                <td class="td4">{{`${row.ratio.toFixed(1)}%`}}</td>
             </tr>
         </table>
         <hr class="table" style="margin: 0"/>
@@ -23,6 +23,11 @@
         name: "AssetTable",
         props: {
             data: Array
+        },
+        methods: {
+            formatNumber(num){
+                return num.toFixed(1).toString().replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+            },
         }
     }
 </script>

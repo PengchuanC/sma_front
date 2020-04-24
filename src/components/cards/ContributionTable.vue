@@ -4,12 +4,12 @@
             <tr>
                 <th>序号</th>
                 <th class="th2">基金简称</th>
-                <th>累计收益（元）</th>
+                <th class="th3">累计收益（元）</th>
             </tr>
             <tr v-for="(row, i) in data" :key="i" :class="row[0]%2===0? '': 'light'">
                 <td class="td1">{{row[0]? row[0]: '-'}}</td>
                 <td class="td2" :class="row[0]? '':'bold'">{{row[1]}}</td>
-                <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2]}}</td>
+                <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2].toFixed(2)}}</td>
             </tr>
         </table>
         <hr class="table" style="margin: 0"/>
@@ -38,6 +38,9 @@
         line-height: 17px;
         .th2 {
             text-align: left;
+        }
+        .th3 {
+            text-align: right;
         }
         &:hover{
             transform: scale(1.1);
@@ -81,6 +84,7 @@
 
     .td3 {
         text-align: right;
+        padding-right: 5px;
     }
 
 
