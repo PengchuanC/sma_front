@@ -161,6 +161,7 @@
                 })
             },
             getEarning(){
+                this.earningsOk = false
                 this.http.get('/api/v1/portfolio/earning/', {
                     headers: {
                         'Authorization': this.$token
@@ -175,7 +176,7 @@
                     this.earningsOk = false
                 }).catch(()=>{
                     this.$Message.error(`所选时间${this.date}对累计回报不适用`)
-                    this.earningOk = true
+                    this.earningsOk = true
                 })
             },
             changeDate(date){
