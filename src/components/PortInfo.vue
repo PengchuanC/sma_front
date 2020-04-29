@@ -8,8 +8,8 @@
             </div>
         </div>
         <div class="performance">
-            <div class="card1"><SimpleDescribe :performance="performance1" v-if="netValueDataOk"/></div>
-            <div class="card2"><SimpleDescribe :performance="performance2" v-if="netValueDataOk" /></div>
+            <div class="card1"><SimpleDescribe :performance="performance1" :id="1" v-if="netValueDataOk"/></div>
+            <div class="card2"><SimpleDescribe :performance="performance2" :id="2" @selectDate="changeDate" v-if="netValueDataOk" /></div>
         </div>
         <NetValueChart :data="netValueChart" v-if="netValueDataOk"/>
         <footer>注：{{portinfo.base}}</footer>
@@ -64,6 +64,7 @@
             return {
                 logo: logo,
                 port_id: 1,
+                date: '',
                 portinfo: {},
                 performance1: {},
                 performance2: {},
@@ -95,26 +96,31 @@
                 })
             },
             getPerformance(){
+                this.netValueDataOk = false
                 this.http.get('/api/v1/portfolio/nav/', {
                     headers: {
                         'Authorization': this.$token
                     },
-                    params: {portId: this.port_id, benchmark: '000300'}
+                    params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
                     this.performance1 = data.info
                     this.performance2 = data.performance
                     this.netValueChart = data.nav
                     this.netValueDataOk = true
+                }).catch(()=>{
+                    this.$Message.error(`所选时间${this.date}对组合表现不适用`)
+                    this.netValueDataOk = true
                 })
             },
             changePeriod(e){
+                this.netValueDataOk = false
                 this.month = e
                 this.http.get('/api/v1/portfolio/nav/', {
                     headers: {
                         'Authorization': this.$token
                     },
-                    params: {portId: this.port_id, benchmark: '000300', period: e}
+                    params: {portId: this.port_id, date: this.date, period: e}
                 }).then(resp=>{
                     let data = resp.data
                     this.netValueChart = data.nav
@@ -126,18 +132,19 @@
                     headers: {
                         'Authorization': this.token
                     },
-                    params: {portId: this.port_id, benchmark: '000300'}
+                    params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.swapHistory = resp.data
                     this.swapHistoryOk = true
                 })
             },
             getInvest(){
+                this.assetAllocateOk = false
                 this.http.get('/api/v1/portfolio/asset/', {
                     headers: {
                         'Authorization': this.$token
                     },
-                    params: {portId: this.port_id, benchmark: '000300'}
+                    params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.invest = resp.data
                     let asset = []
@@ -148,6 +155,9 @@
                     })
                     this.assetAllocate = asset
                     this.assetAllocateOk = true
+                }).catch(()=>{
+                    this.$Message.error(`所选时间${this.date}对资产配置不适用`)
+                    this.assetAllocateOk = true
                 })
             },
             getEarning(){
@@ -155,14 +165,22 @@
                     headers: {
                         'Authorization': this.$token
                     },
-                    params: {portId: this.port_id, benchmark: '000300'}
+                    params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
                     this.earnings = data.earnings
                     this.contribute = data.contribution
                     this.earningsOk = true
+                }).catch(()=>{
+                    this.earningsOk = false
+                }).catch(()=>{
+                    this.$Message.error(`所选时间${this.date}对累计回报不适用`)
+                    this.earningOk = true
                 })
             },
+            changeDate(date){
+                this.date = date
+            }
         },
         mounted(){
             this.$token = localStorage.getItem('token')
@@ -178,6 +196,13 @@
                 this.getEarning()
             } else {
                 this.$router.push({name: 'layout'})
+            }
+        },
+        watch: {
+            date: function () {
+                this.getPerformance()
+                this.getInvest()
+                this.getEarning()
             }
         }
     }

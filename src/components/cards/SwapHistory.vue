@@ -1,6 +1,6 @@
 <template>
     <div class="layout-swap">
-        <div class="date" v-for="(h, i) in history" :key="i">
+        <div class="date" v-for="(h, i) in history" :key="i" v-show="!more || i < 1">
             <i class="icon icon-circle"></i> <span>{{h.date}}</span>
             <ul class="swap">
                 <li v-for="(r, i) in h.history" :key="i" class="item">
@@ -8,12 +8,12 @@
                         <p :class="['买入', '转入'].includes(r.direction)? 'buy': 'sell'">{{r.direction}}</p>
                         <p class="name">{{r.name}}</p>
                         <p class="amount">{{formatNumber(r.amount)}}</p>
-                        <p class="describe">{{r.direction === '买入'? '元': '份'}}</p>
+                        <p class="describe">{{['买入', '退款'].includes(r.direction)? '元': '份'}}</p>
                     </div>
                 </li>
             </ul>
         </div>
-        <div v-show="more" class="more"><a class="more" @click="more = !more">show more</a></div>
+        <div class="more"><a class="more" @click="showMore">show {{moreText}}</a></div>
     </div>
 </template>
 
@@ -26,13 +26,18 @@
         data(){
             return {
                 more: false,
-                maxRows: 24
+                maxRows: 50,
+                moreText: 'more'
             }
         },
         methods: {
             formatNumber(num){
                 return num.toFixed(2).toString().replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
             },
+            showMore(){
+                this.more = !this.more
+                this.moreText = this.more ? 'more': 'less'
+            }
         },
         mounted(){
             let h = this.history[this.history.length-1].history

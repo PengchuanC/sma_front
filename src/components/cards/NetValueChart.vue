@@ -92,6 +92,9 @@
                     ]
                 }
                 chart.setOption(options)
+                window.addEventListener("resize", () => {
+                    chart.resize();
+                });
             },
         },
         mounted(){

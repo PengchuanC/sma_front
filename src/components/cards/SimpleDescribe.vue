@@ -1,6 +1,12 @@
 <template>
     <div class="simple-describe">
-        <h6>{{performance.name}}</h6>
+        <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
+            <h6>{{performance.name}}</h6>
+            <template slot="content">
+                <calendar :value="calendar.value" @select="select" />
+            </template>
+        </AtPopover>
+        <h6 v-else>{{performance.name}}</h6>
         <div class="row">
             <div v-for="(item, i) in formatNumber(row1)" :key="i">
                 <div class="item">
@@ -21,15 +27,25 @@
 </template>
 
 <script>
+    import {Popover as AtPopover} from 'at-ui'
+    import Calendar from "../common/calendar";
+
     export default {
         name: "SimpleDescribe",
         props: {
             performance: Object,
+            id: Number,
         },
+        components: {Calendar, AtPopover },
         data(){
             return {
                 row1: [],
-                row2: []
+                row2: [],
+                calendar: {
+                    value: [2020, 4, 27],
+                    weeks:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+                    months:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+                },
             }
         },
         methods: {
@@ -64,6 +80,11 @@
                     return '-'
                 }
                 return `${num}%`
+            },
+            select(e){
+                e = new Date(e[0], e[1]-1, e[2])
+                let d = this.$moment(e).format('YYYY-MM-DD')
+                this.$emit('selectDate', d)
             }
         },
         mounted(){
@@ -71,6 +92,8 @@
             let row = data.length / 2
             this.row1 = data.slice(0, row)
             this.row2 = data.slice(row, row*2)
+            let date = new Date()
+            this.calendar.value = [date.getFullYear(), date.getMonth()+1, date.getDate()]
         }
     }
 </script>
