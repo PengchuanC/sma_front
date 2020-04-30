@@ -38,7 +38,8 @@
                         splitLine: {
                             show: false
                         },
-                        name: '单位：%'
+                        name: '单位：%',
+                        nameLocation: 'end'
                     },
                     series: [{
                         type: 'bar',

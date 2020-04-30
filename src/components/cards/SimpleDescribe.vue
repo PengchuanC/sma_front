@@ -5,7 +5,7 @@
             <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
                 <i class="icon icon-calendar calendar-icon"></i>
                 <template slot="content">
-                    <calendar :value="calendar.value" @select="select" />
+                    <calendar :value="calendar.value" @select="select" class="selector" />
                 </template>
             </AtPopover>
         </div>
@@ -107,6 +107,11 @@
     cursor: pointer;
     display: inline;
     top: -32px;
-    right: -270px;
+    left: 250px;
+}
+
+.selector {
+    .calendar-icon();
+    transform: translate(-40%, 2%);
 }
 </style>

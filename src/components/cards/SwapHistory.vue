@@ -1,6 +1,6 @@
 <template>
     <div class="layout-swap">
-        <div class="date" v-for="(h, i) in history" :key="i" v-show="!more || i < 1">
+        <div class="date" v-for="(h, i) in history" :key="i" v-show="!more || i < showRowNum">
             <i class="icon icon-circle"></i> <span>{{h.date}}</span>
             <ul class="swap">
                 <li v-for="(r, i) in h.history" :key="i" class="item">
@@ -13,7 +13,7 @@
                 </li>
             </ul>
         </div>
-        <div class="more"><a class="more" @click="showMore">show {{moreText}}</a></div>
+        <div class="more"><a class="more" @click="showMore">{{moreText}}</a></div>
     </div>
 </template>
 
@@ -26,8 +26,10 @@
         data(){
             return {
                 more: false,
-                maxRows: 50,
-                moreText: 'more'
+                // 要显示的时间列数，如果第一列的时间个数就超过了maxRows，则只显示一个调仓日，以此类推
+                showRowNum: 1,
+                maxRows: 25,
+                moreText: '更多'
             }
         },
         methods: {
@@ -36,7 +38,7 @@
             },
             showMore(){
                 this.more = !this.more
-                this.moreText = this.more ? 'more': 'less'
+                this.moreText = this.more ? '更多': '收起'
             }
         },
         mounted(){
@@ -45,6 +47,15 @@
             if (id >= this.maxRows) {
                 this.more = true
             }
+            let lengthCount = 0
+            for (let x in this.history) {
+                let h = this.history[x]
+                lengthCount = lengthCount + h.history.length
+                if ( lengthCount < this.maxRows){
+                    this.showRowNum ++
+                }
+            }
+            // this.maxRows = this.maxRows - this.showRowNum
         }
     }
 </script>

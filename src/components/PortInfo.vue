@@ -128,6 +128,7 @@
                 })
             },
             getSwapHistory(){
+                this.swapHistoryOk = false
                 this.http.get('/api/v1/portfolio/swap/', {
                     headers: {
                         'Authorization': this.token
@@ -136,6 +137,9 @@
                 }).then(resp=>{
                     this.swapHistory = resp.data
                     this.swapHistoryOk = true
+                }).catch(()=>{
+                    this.$Message.error(`所选时间${this.date}对调仓记录不适用`)
+                    this.netValueDataOk = true
                 })
             },
             getInvest(){
@@ -204,6 +208,7 @@
                 this.getPerformance()
                 this.getInvest()
                 this.getEarning()
+                this.getSwapHistory()
             }
         }
     }

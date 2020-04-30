@@ -25,6 +25,13 @@
                         fontFamily: ['Arial', 'kaiti SC', 'Kaiti'],
                         fontSize: 12
                     },
+                    title: {
+                        text: '单位：%',
+                        textStyle: {
+                            fontSize: 12,
+                            fontWeight: 'normal'
+                        }
+                    },
                     grid: {
                     },
                     legend: {
@@ -48,7 +55,7 @@
                         label: {
                             show: true,
                             position: 'inner',
-                            formatter: '{c}%'
+                            formatter: '{c}'
                         },
                         emphasis: {
                             label: {

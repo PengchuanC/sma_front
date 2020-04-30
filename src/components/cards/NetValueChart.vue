@@ -13,7 +13,7 @@
             data: Object,
         },
         methods: {
-            drawNavValue(x, y1, y2, swap){
+            drawNavValue(x, y1, y2, swap, ticker){
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
                 let options = {
@@ -54,6 +54,14 @@
                         splitLine: {
                             show: false
                         },
+                        interval: ticker.interval,
+                        min: ticker.min,
+                        max: ticker.max,
+                        axisLabel: {
+                            formatter: (value)=>{
+                                return value.toFixed(4)
+                            }
+                        }
                     },
                     series: [
                         {
@@ -99,7 +107,7 @@
         },
         mounted(){
             let nav = this.data
-            this.drawNavValue(nav.date, nav.portfolio, nav.benchmark, nav.swap)
+            this.drawNavValue(nav.date, nav.portfolio, nav.benchmark, nav.swap, nav.ticker)
         }
     }
 </script>
