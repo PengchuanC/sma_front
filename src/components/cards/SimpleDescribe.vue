@@ -1,12 +1,14 @@
 <template>
     <div class="simple-describe">
-        <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
-            <h6>{{performance.name}}</h6>
-            <template slot="content">
-                <calendar :value="calendar.value" @select="select" />
-            </template>
-        </AtPopover>
-        <h6 v-else>{{performance.name}}</h6>
+        <div class="active-calendar">
+            <h6 style="line-height: 30px">{{performance.name}}</h6>
+            <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
+                <i class="icon icon-calendar calendar-icon"></i>
+                <template slot="content">
+                    <calendar :value="calendar.value" @select="select" />
+                </template>
+            </AtPopover>
+        </div>
         <div class="row">
             <div v-for="(item, i) in formatNumber(row1)" :key="i">
                 <div class="item">
@@ -100,4 +102,11 @@
 
 <style scoped lang="less">
 @import "../style/portinfo";
+.calendar-icon{
+    position:absolute;
+    cursor: pointer;
+    display: inline;
+    top: -32px;
+    right: -270px;
+}
 </style>
