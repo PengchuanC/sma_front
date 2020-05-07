@@ -6,7 +6,17 @@
                 <th class="th2">基金简称</th>
                 <th class="th3">累计收益（元）</th>
             </tr>
-            <tr v-for="(row, i) in data" :key="i" :class="row[0]%2===0? '': 'light'">
+            <tr v-for="(row, i) in earnings" :key="i" :class="row[0]%2===0? '': 'light'">
+                <td class="td1">{{row[0]? row[0]: '-'}}</td>
+                <td class="td2" :class="row[0]? '':'bold'">{{row[1]}}</td>
+                <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2].toFixed(2)}}</td>
+            </tr>
+            <tr :class="otherHeader[0]%2===0? '': 'light'">
+                <td class="td1"><a @click="showOther=!showOther">{{showOther? '-': '+'}}</a></td>
+                <td class="td2 bold">{{otherHeader[1]}}</td>
+                <td class="td3 bold" :style="otherHeader[2] >= 0?{color: 'red'}: {color: 'green'}">{{otherHeader[2].toFixed(2)}}</td>
+            </tr>
+            <tr v-show="showOther" v-for="(row, i) in other" :key="i" :class="(row[0]+1)%2===0? '': 'light'">
                 <td class="td1">{{row[0]? row[0]: '-'}}</td>
                 <td class="td2" :class="row[0]? '':'bold'">{{row[1]}}</td>
                 <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2].toFixed(2)}}</td>
@@ -20,7 +30,21 @@
     export default {
         name: "ContributionTable",
         props:{
-            data: Array,
+            data: Object,
+        },
+        data(){
+            return{
+                showOther: false,
+                earnings: [],
+                other: [],
+                otherHeader: []
+            }
+        },
+        mounted() {
+            this.earnings = this.data.earnings
+            let other = this.data.other
+            this.other = other.slice(1, other.length)
+            this.otherHeader = other[0]
         }
     }
 </script>
@@ -45,6 +69,12 @@
         &:hover{
             transform: scale(1.1);
             font-weight: bolder;
+        }
+
+        a {
+            color: black;
+            font-weight: bolder;
+            font-size: larger;
         }
     }
 

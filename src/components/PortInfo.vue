@@ -173,7 +173,7 @@
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
-                    this.earnings = data.earnings
+                    this.earnings = data
                     this.contribute = data.contribution
                     this.earningsOk = true
                 }).catch(()=>{
