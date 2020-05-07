@@ -36,11 +36,6 @@ export default new Router({
                     }
                 },
                 {
-                    path: '/onepage/:port_id',
-                    name: 'onepage',
-                    component: ()=>import('@/components/OnePage')
-                },
-                {
                     path: '/hello',
                     name: 'hello',
                     component: ()=>import('@/components/HelloWorld')

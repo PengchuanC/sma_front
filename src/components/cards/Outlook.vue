@@ -2,7 +2,7 @@
     <div class="outlook">
         <div class="header">
             <h5>{{data.port_name}}</h5>
-            <i class="icon icon-bar-chart" @click="show"></i>
+            <i class="icon icon-maximize-2" @click="show"></i>
         </div>
         <div class="performance">
             <p class="nav" :class="color">{{data.nav}}</p>
@@ -37,6 +37,9 @@
         },
         methods: {
             formatNumber(num){
+                if (typeof(num) === undefined) {
+                    return num
+                }
                 return num.toFixed(2).toString().replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
             },
             show(){
@@ -44,7 +47,7 @@
                 this.$router.push({'name': 'info', params: {port_id: port_id}})
             },
         },
-        mounted() {
+        created() {
             this.data.total = this.formatNumber(this.data.total)
             this.data.profit = this.formatNumber(this.data.profit)
             this.color = this.data.pct >=0? 'red': 'green'

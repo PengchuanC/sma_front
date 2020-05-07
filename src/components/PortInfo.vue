@@ -1,7 +1,8 @@
 <template>
     <div class="layout">
         <div class="banner">
-            <img class="image" :src="logo"  alt=""/>
+            <img class="image" :src="banner"  alt=""/>
+            <img class="logo" :src="logo" alt="" />
             <div class="page-title">
                 <h3>{{portinfo.port_name}}</h3>
                 <p>{{portinfo.describe}}</p>
@@ -46,7 +47,8 @@
 </template>
 
 <script>
-    import logo from '../assets/nomura.jpg'
+    import logo from '../assets/logo-03.png'
+    import banner from '../assets/banner.png'
     import SimpleDescribe from "@/components/cards/SimpleDescribe"
     import NetValueChart from "@/components/cards/NetValueChart"
     import SwapHistory from "@/components/cards/SwapHistory"
@@ -63,6 +65,7 @@
         data(){
             return {
                 logo: logo,
+                banner: banner,
                 port_id: 1,
                 date: '',
                 portinfo: {},

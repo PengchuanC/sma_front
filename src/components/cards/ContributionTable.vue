@@ -40,7 +40,7 @@
                 otherHeader: []
             }
         },
-        mounted() {
+        created() {
             this.earnings = this.data.earnings
             let other = this.data.other
             this.other = other.slice(1, other.length)
@@ -105,11 +105,11 @@
     }
 
     .green {
-        color: green;
+        color: #42b983;
     }
 
     .red{
-        color: red;
+        color: #CB2220;
     }
 
     .td3 {
