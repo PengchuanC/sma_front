@@ -12,7 +12,7 @@ import moment from 'moment'
 Vue.use(less)
 
 axios.defaults.baseURL = "http://10.170.236.148:8000/"
-axios.defaults.baseURL = "http://localhost:8000/"
+axios.defaults.baseURL = "http://10.170.139.10:8005/"
 Vue.prototype.http = axios
 Vue.prototype.$Message = Message
 Vue.prototype.$token = ''
