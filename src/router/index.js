@@ -57,7 +57,10 @@ export default new Router({
             path: '/card',
             name: 'card',
             component: ()=>import('@/components/cards/SwapHistory')
+        },
+        {
+            path: '*',
+            redirect: '/'
         }
-
     ]
 })
