@@ -3,18 +3,6 @@
         <div v-for="(p ,i) in portfolio" :key="i">
             <Outlook :data="p" class="card" v-if="showPortfolio"/>
         </div>
-        <div v-for="(p ,i) in portfolio" :key="i">
-            <Outlook :data="p" class="card" v-if="showPortfolio"/>
-        </div>
-        <div v-for="(p ,i) in portfolio" :key="i">
-            <Outlook :data="p" class="card" v-if="showPortfolio"/>
-        </div>
-        <div v-for="(p ,i) in portfolio" :key="i">
-            <Outlook :data="p" class="card" v-if="showPortfolio"/>
-        </div>
-        <div v-for="(p ,i) in portfolio" :key="i">
-            <Outlook :data="p" class="card" v-if="showPortfolio"/>
-        </div>
     </div>
 </template>
 
