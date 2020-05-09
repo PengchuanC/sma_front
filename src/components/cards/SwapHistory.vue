@@ -64,7 +64,7 @@
     .layout-swap{
         font-size: small;
         color: black;
-        width: 300px;
+        width: 100%;
     }
     .date {
         text-align: left;

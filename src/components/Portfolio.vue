@@ -3,6 +3,18 @@
         <div v-for="(p ,i) in portfolio" :key="i">
             <Outlook :data="p" class="card" v-if="showPortfolio"/>
         </div>
+        <div v-for="(p ,i) in portfolio" :key="i">
+            <Outlook :data="p" class="card" v-if="showPortfolio"/>
+        </div>
+        <div v-for="(p ,i) in portfolio" :key="i">
+            <Outlook :data="p" class="card" v-if="showPortfolio"/>
+        </div>
+        <div v-for="(p ,i) in portfolio" :key="i">
+            <Outlook :data="p" class="card" v-if="showPortfolio"/>
+        </div>
+        <div v-for="(p ,i) in portfolio" :key="i">
+            <Outlook :data="p" class="card" v-if="showPortfolio"/>
+        </div>
     </div>
 </template>
 
@@ -56,13 +68,16 @@
     .portfolio {
         display: flex;
         display: -webkit-flex;
-        justify-content: space-between;
+        justify-content: flex-start;
         flex-direction: row;
         flex-wrap: wrap;
         cursor: unset;
+        max-width: 1000px;
+        margin: 0 auto;
 
         .card {
             width: 300px;
+            margin: 10px;
         }
     }
 </style>

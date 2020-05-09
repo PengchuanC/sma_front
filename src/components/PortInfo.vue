@@ -27,13 +27,13 @@
                 <hr>
                 <SwapHistory class="col" :history="swapHistory" v-if="swapHistoryOk" />
             </div>
-            <div>
+            <div class="operations">
                 <h6>持仓信息</h6>
                 <hr>
                 <AssetChart :data="assetAllocate" v-if="assetAllocateOk" />
                 <AssetTable :data="invest" v-if="assetAllocateOk"/>
             </div>
-            <div>
+            <div class="operations">
                 <h6>累计收益贡献</h6>
                 <hr>
                 <ContributionChart :data="contribute" v-if="earningsOk" />

@@ -5,15 +5,18 @@
 @red-border: 3px #CB2220 solid;
 @border-size: 3px;
 
+@detail-width: 320px;
+
 .layout {
   position: relative;
   border: @red-border;
   width: 100%;
   text-align: center;
   font-family: Arial, "Kaiti SC", "Kaiti", monospace;
-  margin-bottom: 5vh;
   padding: 0 0 1vh;
   color: black;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .banner {
@@ -63,25 +66,34 @@
   p {
     color: white;
     font-size: xx-small;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
   }
 }
 
 .performance {
-  display: inline-flex;
+  display: flex;
   width: 100%;
   margin-top: 1%;
   padding: 2px 0 2px 0;
+  flex-direction: row;
+  justify-content: space-around;
+  flex-wrap: wrap;
 
   .card1 {
-    margin-left: 3%;
-    margin-right: 1%;
-    width: calc((96% - 4*@border-size)/2);
+    width: 45%;
+    min-width: 350px;
+    max-width: 475px;
+    margin: 5px 0;
   }
 
   .card2  {
-    margin-left: 1%;
-    margin-right: 3%;
-    width: calc((96% - 4*@border-size)/2);
+    width: 45%;
+    min-width: 350px;
+    max-width: 475px;
+    margin: 5px 0;
   }
 }
 
@@ -117,8 +129,8 @@
     justify-content: space-around;
 
     .item {
-      width: 100px;
-      min-width: 80px;
+      //width: 100px;
+      //min-width: 80px;
       display: inline-block;
       text-align: center;
       &:hover{
@@ -203,9 +215,10 @@ button {
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
 
   .operations {
-    width: 300px;
+    width: @detail-width;
   }
 
   hr {

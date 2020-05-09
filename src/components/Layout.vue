@@ -79,10 +79,9 @@
 
     .content {
         position: relative;
-        width: @width;
-        left: 50%;
-        min-width: 1000px;
-        transform: translate(-50%, 0);
+        width: 100%;
+        /*min-width: 1000px;*/
+        /*transform: translate(-50%, 0);*/
         overflow-y: auto;
         margin-top: 15px;
     }
