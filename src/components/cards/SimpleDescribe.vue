@@ -1,7 +1,10 @@
 <template>
     <div class="simple-describe">
         <div class="active-calendar">
-            <h6 style="line-height: 30px">{{performance.name}}</h6>
+            <div class="header">
+                <h6>{{performance.name}}</h6>
+                <p>{{performance.date? performance.date: ''}}</p>
+            </div>
             <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
                 <i class="icon icon-calendar calendar-icon"></i>
                 <template slot="content">
@@ -48,6 +51,7 @@
                     weeks:['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
                     months:['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
                 },
+                date: null,
             }
         },
         methods: {
@@ -87,6 +91,7 @@
                 e = new Date(e[0], e[1]-1, e[2])
                 let d = this.$moment(e).format('YYYY-MM-DD')
                 this.$emit('selectDate', d)
+                this.calendar.value = [2020, 4, 5]
             }
         },
         mounted(){
@@ -94,8 +99,10 @@
             let row = data.length / 2
             this.row1 = data.slice(0, row)
             this.row2 = data.slice(row, row*2)
-            let date = new Date()
-            this.calendar.value = [date.getFullYear(), date.getMonth()+1, date.getDate()]
+            if (this.performance.dateArray){
+                let d = this.performance.dateArray
+                this.calendar.value = [d[0], d[1]+1, d[2]]
+            }
         }
     }
 </script>

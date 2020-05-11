@@ -19,10 +19,15 @@
                 let options = {
                     legend : {
                         show : true,
-                        icon: 'line'
+                        icon: 'line',
+                        textStyle: {
+                            fontSize: 18
+                        },
+                        top: '5%'
                     },
                     textStyle: {
-                        fontFamily: ['Arial', 'kaiti SC', 'Kaiti']
+                        fontFamily: ['Arial', 'kaiti SC', 'Kaiti'],
+                        fontSize: 12
                     },
                     tooltip: {
                         trigger: 'item',
@@ -74,11 +79,12 @@
                                 symbolSize: [30 , 20],
                                 symbolOffset: [0, -15],
                                 fontFamily: 'Kaiti',
+                                fontSize: 12,
                                 data: swap.map(x=>{
                                     let colors = {1: '#668B8B', 2: '#2f4554', 3: '#CB2220'}
                                     return {
                                         name: x.x, value: x.value, xAxis: x.x, yAxis: x.y,
-                                        itemStyle: {color: colors[x.code]}
+                                        itemStyle: {color: colors[x.code], opacity: 0.9},
                                     }
                                 })
                             }

@@ -109,6 +109,8 @@
                     let data = resp.data
                     this.performance1 = data.info
                     this.performance2 = data.performance
+                    let dateStr = data.info.date
+                    this.performance2.dateArray = this.$moment(dateStr, "YYYY/MM/DD").toArray()
                     this.netValueChart = data.nav
                     this.netValueDataOk = true
                 }).catch(()=>{

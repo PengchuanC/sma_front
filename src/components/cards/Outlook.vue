@@ -1,8 +1,7 @@
 <template>
-    <div class="outlook">
+    <div class="outlook" @click="show">
         <div class="header">
             <h5>{{data.port_name}}</h5>
-            <i class="icon icon-maximize-2" @click="show"></i>
         </div>
         <div class="performance">
             <p class="nav" :class="color">{{data.nav}}</p>
@@ -17,7 +16,7 @@
             <p>{{data.total}}</p>
         </div>
         <div class="performance">
-            <p>今日盈亏(元)</p>
+            <p>当日盈亏(元)</p>
             <p>{{data.profit}}</p>
         </div>
         <p class="note">{{data.date}}</p>
@@ -60,6 +59,7 @@
      border: 1px solid #efefef;
      background-color: #fbfbfb;
      padding: 15px 10px 0 10px;
+     cursor: pointer;
 
      h5 {
          text-align: left;
