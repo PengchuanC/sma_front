@@ -71,7 +71,9 @@
         position: relative;
         left: 50%;
         border: 1px solid #C0C0C0;
-        width: 400px;
+        width: 40%;
+        min-width: 300px;
+        max-width: 400px;
         transform: translate(-50%, 50%);
         border-radius: 5px;
         padding: 20px;
