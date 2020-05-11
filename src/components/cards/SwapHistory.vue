@@ -94,7 +94,7 @@
     }
     .swap p {
         display: inline-block;
-        font-size: smaller;
+        /*font-size: smaller;*/
         color: black;
     }
 
@@ -102,14 +102,14 @@
         background-color: #CB2220;
         padding: 2px 10px;
         color: white;
-        width: 45px;
+        width: 50px;
     }
 
     .swap .sell{
         background-color: #80A9AE;
         padding: 2px 10px;
         color: white;
-        width: 45px;
+        width: 50px;
     }
 
     .swap .name{

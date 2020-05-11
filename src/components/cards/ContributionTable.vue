@@ -53,13 +53,13 @@
     table {
         border-collapse: collapse;
         width: 100%;
-        font-size: small;
+        /*font-size: small;*/
         font-family: Arial, "Kaiti SC", 'Kaiti', sans-serif;
         margin-bottom: 0;
     }
 
     tr {
-        line-height: 17px;
+        line-height: 22px;
         .th2 {
             text-align: left;
         }

@@ -36,13 +36,13 @@
     table {
         border-collapse: collapse;
         width: 100%;
-        font-size: small;
+        /*font-size: small;*/
         font-family: Arial, "Kaiti SC", 'Kaiti', sans-serif;
         margin-bottom: 0;
     }
 
     tr {
-        line-height: 16px;
+        line-height: 20px;
         .th2 {
             text-align: left;
         }
