@@ -190,6 +190,13 @@
             },
             changeDate(date){
                 this.date = date
+            },
+            init() {
+                this.getPortInfo()
+                this.getPerformance()
+                this.getInvest()
+                this.getEarning()
+                this.getSwapHistory()
             }
         },
         mounted(){
@@ -199,21 +206,20 @@
             }
             this.port_id = this.$route.params.port_id
             if (this.port_id){
-                this.getPortInfo()
-                this.getPerformance()
-                this.getSwapHistory()
-                this.getInvest()
-                this.getEarning()
+                this.init()
             } else {
                 this.$router.push({name: 'layout'})
             }
         },
         watch: {
             date: function () {
-                this.getPerformance()
-                this.getInvest()
-                this.getEarning()
-                this.getSwapHistory()
+                this.init()
+            },
+            $route (to) {
+                if (to.name === 'info'){
+                    this.port_id = this.$route.params.port_id
+                    this.init()
+                }
             }
         }
     }
