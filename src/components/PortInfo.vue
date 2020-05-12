@@ -25,7 +25,7 @@
             <div class="operations">
                 <h6>操作日志</h6>
                 <hr>
-                <SwapHistory class="col" :history="swapHistory" v-if="swapHistoryOk" />
+                <Instruction class="col" :history="swapHistory" v-if="swapHistoryOk" />
             </div>
             <div class="operations">
                 <h6>持仓信息</h6>
@@ -51,17 +51,18 @@
     import banner from '../assets/banner.png'
     import SimpleDescribe from "@/components/cards/SimpleDescribe"
     import NetValueChart from "@/components/cards/NetValueChart"
-    import SwapHistory from "@/components/cards/SwapHistory"
     import AssetChart from "@/components/cards/AssetChart"
     import AssetTable from "@/components/cards/AssetTable"
     import ContributionChart from "@/components/cards/ContributionChart"
     import ContributionTable from "@/components/cards/ContributionTable"
+    import Instruction from "./cards/Instruction"
 
     export default {
         name: "PortInfo",
         components: {
+            Instruction,
             ContributionTable,
-            ContributionChart, AssetTable, AssetChart, SwapHistory, NetValueChart, SimpleDescribe},
+            ContributionChart, AssetTable, AssetChart, NetValueChart, SimpleDescribe},
         data(){
             return {
                 logo: logo,
@@ -134,7 +135,7 @@
             },
             getSwapHistory(){
                 this.swapHistoryOk = false
-                this.http.get('/api/v1/portfolio/swap/', {
+                this.http.get('/api/v1/portfolio/instruct/', {
                     headers: {
                         'Authorization': this.token
                     },

@@ -56,7 +56,7 @@
         },
         methods: {
             formatNumber(row){
-                if (row.length===4){
+                if (this.id===1){
                     return row.map(x=>{
                         if (x.value < 1000){
                             return {name:x.name, value: x.value===0? '-':x.value}
@@ -74,7 +74,7 @@
                     if (x.name === '夏普比') {
                         return x
                     }
-                    if (['累计收益'].includes(x.name)) {
+                    if (['累计收益率', '当日收益率'].includes(x.name)) {
                         let color = x.value > 0? 'red': 'green'
                         return {name: x.name, value: this.formatPercent(x.value), color: color}
                     }
