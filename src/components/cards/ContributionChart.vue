@@ -20,7 +20,7 @@
                     grid: {
                         left: 40,
                         top: 30,
-                        height: 140
+                        height: 135
                     },
                     textStyle: {
                         fontFamily: ['Arial', 'kaiti SC', 'Kaiti'],
@@ -31,7 +31,7 @@
                         splitLine: {
                             show: false
                         },
-                        data: ['总计', '权益', '固收', '其他']
+                        data: ['\n总计', '\n权益', '\n固收', '\n另类', '货币\n及现金'],
                     },
                     yAxis: {
                         type: 'value',
@@ -43,13 +43,13 @@
                     },
                     series: [{
                         type: 'bar',
-                        data: [data['总计'], data['权益'], data['固收'], data['其他']],
+                        data: [data['总计'], data['权益'], data['固收'], data['另类'], data['货币及现金']],
                         itemStyle: {
                             normal: {
                                 color: (x)=>{
-                                    let colors = ['#c23531', '#61a0a8', '#61a0a8', '#61a0a8']
+                                    let colors = ['#c23531', '#61a0a8', '#61a0a8', '#61a0a8', '#61a0a8']
                                     return colors[x.dataIndex]
-                                }
+                                },
                             }
                         },
                         label: {
