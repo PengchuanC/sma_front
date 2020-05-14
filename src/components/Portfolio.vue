@@ -53,19 +53,39 @@
 </script>
 
 <style scoped lang="less">
-    .portfolio {
-        display: flex;
-        display: -webkit-flex;
-        justify-content: flex-start;
-        flex-direction: row;
-        flex-wrap: wrap;
-        cursor: unset;
-        max-width: 1000px;
-        margin: 0 auto;
+    @media screen and (min-width: 480px) {
+        .portfolio {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: flex-start;
+            flex-direction: row;
+            flex-wrap: wrap;
+            cursor: unset;
+            max-width: 1000px;
+            margin: 0 auto;
 
-        .card {
-            width: 300px;
-            margin: 10px;
+            .card {
+                width: 300px;
+                margin: 10px;
+            }
+        }
+    }
+
+    @media screen and (max-width: 480px) {
+        .portfolio {
+            display: flex;
+            display: -webkit-flex;
+            justify-content: center;
+            flex-direction: row;
+            flex-wrap: wrap;
+            cursor: unset;
+            max-width: 1000px;
+            margin: 0 auto;
+
+            .card {
+                width:90vw;
+                margin: 10px;
+            }
         }
     }
 </style>
