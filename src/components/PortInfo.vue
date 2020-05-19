@@ -227,5 +227,5 @@
 </script>
 
 <style scoped lang="less">
-@import "./style/portinfo";
+@import "../assets/style/portinfo";
 </style>

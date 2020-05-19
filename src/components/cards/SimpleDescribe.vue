@@ -108,7 +108,7 @@
 </script>
 
 <style scoped lang="less">
-@import "../style/portinfo";
+@import "../../assets/style/portinfo";
 .calendar-icon{
     position:absolute;
     cursor: pointer;
