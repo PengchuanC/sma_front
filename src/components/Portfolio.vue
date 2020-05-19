@@ -83,8 +83,9 @@
             margin: 0 auto;
 
             .card {
-                width:90vw;
+                width: 90vw;
                 margin: 10px;
+                min-width: 250px;
             }
         }
     }

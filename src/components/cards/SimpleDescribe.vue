@@ -121,4 +121,75 @@
     .calendar-icon();
     transform: translate(-40%, 2%);
 }
+
+@media screen and (max-width: 480px) {
+    .simple-describe {
+        border: @red-border;
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+
+            h6 {
+                text-align: left;
+                margin-left: 2%;
+                line-height: 30px;
+                margin-bottom: 10px;
+            }
+
+            p {
+                text-align: right;
+                margin-right: 2%;
+                line-height: 30px;
+                margin-bottom: 10px;
+                font-size: 14px;
+            }
+        }
+
+        .active-calendar{
+            display: inline;
+        }
+
+
+        .popover {
+            display: flex;
+            margin-left: 10px;
+            white-space: nowrap;
+            text-align: left;
+            justify-content: left;
+        }
+
+        .row{
+            display: flex;
+            padding: 0;
+            margin-left: 0;
+            margin-right: 0;
+            text-align: justify;
+            justify-content: space-around;
+
+            .item {
+                width: 80px;
+                display: inline-block;
+                text-align: center;
+                &:hover{
+                    transform: scale(1.3);
+                }
+
+                h4 {
+                    text-align: center;
+                    font-size: 16px;
+                }
+                p {
+                    font-size: 12px;
+                }
+            }
+        }
+
+        .row2 {
+            margin-top: 10px;
+            margin-bottom: 10px;
+            .row();
+        }
+    }
+}
 </style>

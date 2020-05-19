@@ -14,6 +14,7 @@
         },
         methods: {
             drawNavValue(x, y1, y2, swap, ticker){
+                let width = window.innerWidth;
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
                 let options = {
@@ -21,7 +22,7 @@
                         show : true,
                         icon: 'line',
                         textStyle: {
-                            fontSize: 18
+                            fontSize: width >= 480? 18: 14
                         },
                         top: '5%'
                     },
@@ -37,7 +38,7 @@
                     },
                     grid : {
                         left : '4%',
-                        right : '6%',
+                        right : 50,
                         bottom : '4%',
                         top : 30,
                         containLabel : true
@@ -76,10 +77,10 @@
                             // symbol: 'none',
                             markPoint: {
                                 symbol: 'rect',
-                                symbolSize: [30 , 20],
+                                symbolSize: width >= 480 ? [30 , 20]: [25, 16],
                                 symbolOffset: [0, -15],
                                 fontFamily: 'Kaiti',
-                                fontSize: 12,
+                                fontSize: width >= 480 ? 12: 8,
                                 data: swap.map(x=>{
                                     let colors = {1: '#668B8B', 2: '#2f4554', 3: '#CB2220'}
                                     return {
@@ -122,5 +123,12 @@
     #net-value-chart{
         width: 100%;
         height: 300px;
+    }
+
+    @media screen and (max-width: 480px){
+        #net-value-chart{
+            width: 100%;
+            height: 200px;
+        }
     }
 </style>
