@@ -22,7 +22,7 @@
                         show : true,
                         icon: 'line',
                         textStyle: {
-                            fontSize: width >= 480? 18: 14
+                            fontSize: width >= 480? 18: 12
                         },
                         top: '5%'
                     },
