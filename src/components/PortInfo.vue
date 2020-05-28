@@ -86,18 +86,24 @@
             }
         },
         methods: {
+            handleException(e){
+                if (e.response.status === 401){
+                    this.$router.push({name: 'login'})
+                    return true
+                }
+                return false
+            },
             getPortInfo(){
                 this.http.post('/api/v1/portfolio/',
                     {
                         portId: this.port_id
                     },
-                    {headers: {
-                            'Authorization': this.$token
-                        },
-                    }
                 ).then(resp=>{
                     this.portinfo = resp.data
-                })
+                }).catch(e => {
+                    this.handleException(e)
+                }
+                )
             },
             getPerformance(){
                 this.netValueDataOk = false
@@ -114,7 +120,10 @@
                     this.performance2.dateArray = this.$moment(dateStr, "YYYY/MM/DD").toArray()
                     this.netValueChart = data.nav
                     this.netValueDataOk = true
-                }).catch(()=>{
+                }).catch((e)=>{
+                    if (this.handleException(e)) {
+                        return
+                    }
                     this.$Message.error(`所选时间${this.date}对组合表现不适用`)
                     this.netValueDataOk = true
                 })
@@ -136,14 +145,14 @@
             getSwapHistory(){
                 this.swapHistoryOk = false
                 this.http.get('/api/v1/portfolio/instruct/', {
-                    headers: {
-                        'Authorization': this.token
-                    },
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.swapHistory = resp.data
                     this.swapHistoryOk = true
-                }).catch(()=>{
+                }).catch((e)=>{
+                    if (this.handleException(e)) {
+                        return
+                    }
                     this.$Message.error(`所选时间${this.date}对调仓记录不适用`)
                     this.netValueDataOk = true
                 })
@@ -151,9 +160,6 @@
             getInvest(){
                 this.assetAllocateOk = false
                 this.http.get('/api/v1/portfolio/asset/', {
-                    headers: {
-                        'Authorization': this.$token
-                    },
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.invest = resp.data
@@ -165,7 +171,10 @@
                     })
                     this.assetAllocate = asset
                     this.assetAllocateOk = true
-                }).catch(()=>{
+                }).catch((e)=>{
+                    if (this.handleException(e)) {
+                        return
+                    }
                     this.$Message.error(`所选时间${this.date}对资产配置不适用`)
                     this.assetAllocateOk = true
                 })
@@ -173,16 +182,16 @@
             getEarning(){
                 this.earningsOk = false
                 this.http.get('/api/v1/portfolio/earning/', {
-                    headers: {
-                        'Authorization': this.$token
-                    },
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
                     this.earnings = data
                     this.contribute = data.contribution
                     this.earningsOk = true
-                }).catch(()=>{
+                }).catch((e)=>{
+                    if (this.handleException(e)) {
+                        return
+                    }
                     this.earningsOk = false
                 }).catch(()=>{
                     this.$Message.error(`所选时间${this.date}对累计回报不适用`)
@@ -201,8 +210,8 @@
             }
         },
         mounted(){
-            this.$token = localStorage.getItem('token')
-            if (!this.$token) {
+            let token = localStorage.getItem('token')
+            if (!token) {
                 this.$router.push({name: 'layout'})
             }
             this.port_id = this.$route.params.port_id

@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import axios from 'axios'
+import http from './components/scripts/http'
 import less from 'less'
 
 import 'at-ui-style'
@@ -12,8 +12,8 @@ import moment from 'moment'
 Vue.use(less)
 
 // axios.defaults.baseURL = "http://localhost:8000/api/fof/"
-axios.defaults.baseURL = "http://product.nomuraoi-sec.com/api/fof/"
-Vue.prototype.http = axios
+// axios.defaults.baseURL = "http://product.nomuraoi-sec.com/api/fof/"
+Vue.prototype.http = http
 Vue.prototype.$Message = Message
 Vue.prototype.$token = ''
 Vue.prototype.$moment = moment
