@@ -135,7 +135,7 @@
         background: #191919;
         text-align: center;
         border-radius: 20px;
-        opacity: 0.8;
+        opacity: 0.7;
         transform: translate(-50%, -50%);
 
         .login-wrapper {
@@ -153,7 +153,7 @@
                 margin: 20px auto;
                 text-align: center;
                 border: 2px solid #3498db;
-                padding: 14px 10px;
+                /*padding: 14px 10px;*/
                 width: 200px;
                 outline: none;
                 color: white;
@@ -163,7 +163,7 @@
 
                 &:focus {
                     width: 250px;
-                    background:transparent
+                    background: transparent
                 }
             }
 
