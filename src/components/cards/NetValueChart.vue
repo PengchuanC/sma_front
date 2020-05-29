@@ -77,15 +77,18 @@
                             // symbol: 'none',
                             markPoint: {
                                 symbol: 'rect',
-                                symbolSize: width >= 480 ? [30 , 20]: [25, 16],
-                                symbolOffset: [0, -15],
+                                symbolSize: width >= 480 ? function (value) {
+                                    return [42, (value.length/3).toFixed(0)*16]
+                                }: [30, 20],
+                                symbolOffset: [0, -20],
                                 fontFamily: 'Kaiti',
-                                fontSize: width >= 480 ? 12: 8,
-                                data: swap.map(x=>{
-                                    let colors = {1: '#668B8B', 2: '#2f4554', 3: '#CB2220'}
+                                fontSize: width >= 480 ? 6: 8,
+                                data: swap.slice(1, swap.length).map(x=>{
+                                    // let colors = {1: '#668B8B', 2: '#2f4554', 3: '#CB2220'}
+                                    console.log(x)
                                     return {
-                                        name: x.x, value: x.value, xAxis: x.x, yAxis: x.y,
-                                        itemStyle: {color: colors[x.code], opacity: 0.9},
+                                        name: x.x, value: x.value.join('\n'), xAxis: x.x, yAxis: x.y, height: x.code,
+                                        itemStyle: {color: '#CB2220', opacity: 0.9},
                                     }
                                 })
                             }
