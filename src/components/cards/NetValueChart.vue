@@ -74,7 +74,6 @@
                             name: '本组合',
                             type: 'line',
                             data: y1,
-                            // symbol: 'none',
                             markPoint: {
                                 symbol: 'rect',
                                 symbolSize: width >= 480 ? function (value) {
@@ -84,8 +83,6 @@
                                 fontFamily: 'Kaiti',
                                 fontSize: width >= 480 ? 6: 8,
                                 data: swap.slice(1, swap.length).map(x=>{
-                                    // let colors = {1: '#668B8B', 2: '#2f4554', 3: '#CB2220'}
-                                    console.log(x)
                                     return {
                                         name: x.x, value: x.value.join('\n'), xAxis: x.x, yAxis: x.y, height: x.code,
                                         itemStyle: {color: '#CB2220', opacity: 0.9},

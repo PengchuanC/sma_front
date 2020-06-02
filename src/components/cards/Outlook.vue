@@ -43,7 +43,7 @@
             },
             show(){
                 let port_id = this.data.port_id
-                this.$router.push({'name': 'info', params: {port_id: port_id}})
+                this.$router.push({name: 'info', params: {port_id: port_id}})
             },
         },
         created() {

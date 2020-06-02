@@ -21,15 +21,9 @@
             }
         },
         methods: {
-            show(i){
-                let port_id = this.portfolio[i].port_id
-                this.$router.push({'name': 'info', params: {port_id: port_id}})
-            },
             getPortfolio(){
                 this.showPortfolio = false
-                this.http.get('/api/v1/portfolio/', {
-                    headers: {'Authorization': this.$token},
-                }).then(resp=>{
+                this.http.get('/api/v1/portfolio/').then(resp=>{
                     this.portfolio = resp.data
                     this.showPortfolio = true
                 }).catch(()=>{
@@ -41,12 +35,6 @@
         mounted(){
         },
         created(){
-            let token = localStorage.getItem('token')
-            if (token === null) {
-                this.$router.push({name: 'login'})
-                return
-            }
-            this.$token = token
             this.getPortfolio()
         }
     }

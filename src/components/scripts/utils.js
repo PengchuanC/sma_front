@@ -34,4 +34,12 @@ export class Token {
         return localStorage.getItem('longToken')
     }
 
+    static getIdentify() {
+        return localStorage.getItem('identify')
+    }
+
+    static setIdentify(value) {
+        localStorage.setItem('identify', value)
+    }
+
 }

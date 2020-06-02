@@ -108,9 +108,6 @@
             getPerformance(){
                 this.netValueDataOk = false
                 this.http.get('/api/v1/portfolio/nav/', {
-                    headers: {
-                        'Authorization': this.$token
-                    },
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
@@ -132,9 +129,6 @@
                 this.netValueDataOk = false
                 this.month = e
                 this.http.get('/api/v1/portfolio/nav/', {
-                    headers: {
-                        'Authorization': this.$token
-                    },
                     params: {portId: this.port_id, date: this.date, period: e}
                 }).then(resp=>{
                     let data = resp.data
@@ -210,10 +204,6 @@
             }
         },
         mounted(){
-            let token = localStorage.getItem('token')
-            if (!token) {
-                this.$router.push({name: 'layout'})
-            }
             this.port_id = this.$route.params.port_id
             if (this.port_id){
                 this.init()
