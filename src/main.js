@@ -11,8 +11,7 @@ import moment from 'moment'
 
 Vue.use(less)
 
-// axios.defaults.baseURL = "http://localhost:8000/api/fof/"
-// axios.defaults.baseURL = "http://product.nomuraoi-sec.com/api/fof/"
+
 Vue.prototype.http = http
 Vue.prototype.$Message = Message
 Vue.prototype.$token = ''
