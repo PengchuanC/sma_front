@@ -37,7 +37,11 @@ async function addToken(config) {
                 config.headers.Authorization = `Bearer ${token}`
                 Token.setToke(config.headers.Authorization)
                 resolve(config);
-            }).catch((e) => reject(e))
+            }).catch((e) => {
+                Token.setToke('')
+                Token.setLongToken('')
+                reject(e)
+            })
         });
     }
     config.headers['Authorization'] = Token.getToken()

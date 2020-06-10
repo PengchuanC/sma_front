@@ -54,6 +54,8 @@
         },
         methods:{
             login(){
+                Token.setToke(null)
+                Token.setLongToken(null)
                 this.http.post('/auth/', {username: this.username, password: this.password}).then(resp=>{
                     let data = resp.data
                     let token = data.access
