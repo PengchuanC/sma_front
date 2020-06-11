@@ -57,6 +57,8 @@
     import ContributionTable from "@/components/cards/ContributionTable"
     import Instruction from "./cards/Instruction"
 
+    import {Token} from './scripts/utils'
+
     export default {
         name: "PortInfo",
         components: {
@@ -87,7 +89,7 @@
         },
         methods: {
             handleException(e){
-                if (e.response.status === 401){
+                if ([401, 403].includes(e.response.status)){
                     this.$router.push({name: 'login'})
                     return true
                 }
@@ -196,14 +198,22 @@
                 this.date = date
             },
             init() {
-                this.getPortInfo()
-                this.getPerformance()
-                this.getInvest()
-                this.getEarning()
-                this.getSwapHistory()
+                try {
+                    this.getPortInfo()
+                    this.getPerformance()
+                    this.getInvest()
+                    this.getEarning()
+                    this.getSwapHistory()
+                }catch(e){
+                    console.log(e)
+                    this.route.push({name: 'login'})
+                }
             }
         },
         mounted(){
+            // 携宁无法将数据携带到header中，只能作为url param
+            let auth = this.$route.query['signmsg']
+            Token.setIdentify(auth)
             this.port_id = this.$route.params.port_id
             if (this.port_id){
                 this.init()
