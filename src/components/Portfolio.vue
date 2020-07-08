@@ -23,7 +23,7 @@
         methods: {
             getPortfolio(){
                 this.showPortfolio = false
-                this.http.get('/api/v1/portfolio/').then(resp=>{
+                this.http.get('/v1/portfolio/').then(resp=>{
                     this.portfolio = resp.data
                     this.showPortfolio = true
                 }).catch(()=>{

@@ -56,6 +56,7 @@
             login(){
                 Token.setToke('')
                 Token.setLongToken('')
+                Token.setExpireDate('')
                 this.http.post('/auth/', {username: this.username, password: this.password}).then(resp=>{
                     let data = resp.data
                     let token = data.access

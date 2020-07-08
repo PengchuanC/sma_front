@@ -4,7 +4,7 @@ import Router from 'vue-router'
 Vue.use(Router)
 
 export default new Router({
-    base: '/fof/',
+    // base: '/fof/',
     mode: 'history',
     routes: [
         {

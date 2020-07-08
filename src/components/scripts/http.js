@@ -2,8 +2,8 @@ import axios from 'axios'
 import {Token} from "./utils"
 import moment from "moment"
 
-const url = "http://product.nomuraoi-sec.com/api/fof/"
-// const url = "http://0.0.0.0:8000/api/fof/"
+// const url = "http://product.nomuraoi-sec.com/api/fof/"
+const url = "http://0.0.0.0:8000/api/sma/"
 const refreshUrl = url + 'token/refresh/'
 
 let request = axios.create({

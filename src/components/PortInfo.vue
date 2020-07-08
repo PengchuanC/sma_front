@@ -96,7 +96,7 @@
                 return false
             },
             getPortInfo(){
-                this.http.post('/api/v1/portfolio/',
+                this.http.post('/v1/portfolio/',
                     {
                         portId: this.port_id
                     },
@@ -109,7 +109,7 @@
             },
             getPerformance(){
                 this.netValueDataOk = false
-                this.http.get('/api/v1/portfolio/nav/', {
+                this.http.get('/v1/portfolio/nav/', {
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
@@ -130,7 +130,7 @@
             changePeriod(e){
                 this.netValueDataOk = false
                 this.month = e
-                this.http.get('/api/v1/portfolio/nav/', {
+                this.http.get('/v1/portfolio/nav/', {
                     params: {portId: this.port_id, date: this.date, period: e}
                 }).then(resp=>{
                     let data = resp.data
@@ -140,7 +140,7 @@
             },
             getSwapHistory(){
                 this.swapHistoryOk = false
-                this.http.get('/api/v1/portfolio/instruct/', {
+                this.http.get('/v1/portfolio/instruct/', {
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.swapHistory = resp.data
@@ -155,7 +155,7 @@
             },
             getInvest(){
                 this.assetAllocateOk = false
-                this.http.get('/api/v1/portfolio/asset/', {
+                this.http.get('/v1/portfolio/asset/', {
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     this.invest = resp.data
@@ -177,7 +177,7 @@
             },
             getEarning(){
                 this.earningsOk = false
-                this.http.get('/api/v1/portfolio/earning/', {
+                this.http.get('/v1/portfolio/earning/', {
                     params: {portId: this.port_id, date: this.date}
                 }).then(resp=>{
                     let data = resp.data
