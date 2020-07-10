@@ -20,7 +20,7 @@
                     tooltip: {
                         trigger: 'item',
                     },
-                    color: ['#c23531','#2f4554', '#61a0a8', '#6e7074', '#BEBEBE'],
+                    color: ['#900000','#C00000', '#D18484', '#E0B5B5', '#A6A6A6'],
                     textStyle: {
                         fontFamily: ['Arial', 'kaiti SC', 'Kaiti'],
                         fontSize: 12

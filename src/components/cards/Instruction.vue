@@ -115,7 +115,7 @@
     }
 
     .swap .sell{
-        background-color: #80A9AE;
+        background-color: #A6A6A6;
         color: white;
         width: 38px;
         text-align: center;
