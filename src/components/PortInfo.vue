@@ -38,6 +38,7 @@
                 <hr>
                 <ContributionChart :data="contribute" v-if="earningsOk" />
                 <ContributionTable :data="earnings" v-if="earningsOk" />
+                <p class="note">注：上述收益中未展示资产估值增加和利息收入之外的内容。</p>
             </div>
         </div>
         <p class="disclaimer">
