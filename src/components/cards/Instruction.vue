@@ -96,7 +96,7 @@
     }
 
     .swap .item:hover{
-        transform: scale(1.05);
+        /*transform: scale(1.05);*/
         font-weight: bolder;
     }
     .swap p {
@@ -127,7 +127,7 @@
         margin-left: 5px;
         white-space: nowrap;
         text-overflow: ellipsis;
-        width: 180px;
+        width: 160px;
         vertical-align: middle;
         overflow-x: hidden;
     }
@@ -135,7 +135,7 @@
     .swap .amount{
         padding-bottom: 0;
         vertical-align: middle;
-        width: 70px;
+        width: 90px;
         text-align: right;
     }
 
