@@ -3,7 +3,7 @@
         <div class="active-calendar">
             <div class="header">
                 <h6>{{performance.name}}</h6>
-                <p>{{performance.date? performance.date: ''}}</p>
+<!--                <p>{{performance.date? performance.date: ''}}</p>-->
             </div>
             <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
                 <i class="icon icon-calendar calendar-icon"></i>
@@ -113,8 +113,9 @@
     position:absolute;
     cursor: pointer;
     display: inline;
-    top: -32px;
+    top: -22px;
     left: 250px;
+    color: white;
 }
 
 .selector {
@@ -129,12 +130,14 @@
         .header {
             display: flex;
             justify-content: space-between;
+            background-color: #CC2220;
 
             h6 {
                 text-align: left;
                 margin-left: 2%;
                 line-height: 30px;
-                margin-bottom: 10px;
+                margin-bottom: 0;
+                color: white;
             }
 
             p {
