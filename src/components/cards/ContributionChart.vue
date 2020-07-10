@@ -47,7 +47,7 @@
                         itemStyle: {
                             normal: {
                                 color: (x)=>{
-                                    let colors = ['#c23531', '#61a0a8', '#61a0a8', '#61a0a8', '#61a0a8']
+                                    let colors = ['#c00000', '#E0B5B5', '#E0B5B5', '#E0B5B5', '#E0B5B5']
                                     return colors[x.dataIndex]
                                 },
                             }

@@ -99,7 +99,8 @@
                                 normal:{
                                     lineStyle:{
                                         width:2,
-                                        type:'dashed'
+                                        type:'dashed',
+                                        color: '#D18484'
                                     }
                                 }
                             }
