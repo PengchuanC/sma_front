@@ -54,6 +54,11 @@
                         axisLabel: {
                             interval: x.length - 2
                         },
+                        axisLine:{
+                            lineStyle:{
+                                color:'#A6A6A6'
+                            }
+                        },
                         position: 'bottom',
                     },
                         {
@@ -65,6 +70,11 @@
                             },
                             axisLabel: {
                                 interval: x.length - 2
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#A6A6A6'
+                                }
                             },
                             position: 'bottom',
                         }],
@@ -82,7 +92,12 @@
                                 formatter: (value)=>{
                                     return value.toFixed(2)
                                 }
-                            }
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#A6A6A6'
+                                }
+                            },
                         },
                         {
                             type: 'value',
@@ -94,7 +109,12 @@
                                 formatter: (value)=>{
                                     return `${value.toFixed(1)}%`
                                 }
-                            }
+                            },
+                            axisLine:{
+                                lineStyle:{
+                                    color:'#A6A6A6'
+                                }
+                            },
                         }],
                     series: [
                         {
