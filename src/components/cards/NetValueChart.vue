@@ -14,7 +14,7 @@
         },
         methods: {
             drawNavValue(x, y1, y2, swap, ticker){
-                let excess = y1.map((v, i)=>{return (y1[i] - y2[i]).toFixed(4)})
+                let excess = y1.map((v, i)=>{return (100*(y1[i] - y2[i])).toFixed(2)})
                 let width = window.innerWidth;
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
@@ -92,7 +92,7 @@
                             },
                             axisLabel: {
                                 formatter: (value)=>{
-                                    return value.toFixed(2)
+                                    return `${value.toFixed(1)}%`
                                 }
                             }
                         }],
@@ -144,9 +144,9 @@
                                     lineStyle:{
                                         width:2,
                                         type:'dashed',
-                                        color: '#A6A6A6'
+                                        color: '#E9E9E9'
                                     },
-                                    color: '#A6A6A6'
+                                    color: '#E9E9E9'
                                 },
                             },
                         }
