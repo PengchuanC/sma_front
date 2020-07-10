@@ -16,7 +16,7 @@
                 <td class="td2 bold">{{otherHeader[1]}}</td>
                 <td class="td3 bold" :style="otherHeader[2] >= 0?{color: 'red'}: {color: 'green'}">{{otherHeader[2].toFixed(2)}}</td>
             </tr>
-            <tr v-show="showOther" v-for="(row, i) in other" :key="i" :class="(row[0]+1)%2===0? '': 'light'">
+            <tr v-show="showOther" v-for="(row, i) in other" :key="'ot'+i" :class="(row[0]+1)%2===0? '': 'light'">
                 <td class="td1">{{row[0]? row[0]: '-'}}</td>
                 <td class="td2" :class="row[0]? '':'bold'">{{row[1]}}</td>
                 <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2].toFixed(2)}}</td>
