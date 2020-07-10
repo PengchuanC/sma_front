@@ -14,6 +14,7 @@
         },
         methods: {
             drawNavValue(x, y1, y2, swap, ticker){
+                let excess = y1.map((v, i)=>{return (100*(y1[i] - y2[i])).toFixed(2)})
                 let width = window.innerWidth;
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
@@ -24,7 +25,7 @@
                         textStyle: {
                             fontSize: width >= 480? 18: 12
                         },
-                        top: '5%'
+                        top: 0
                     },
                     textStyle: {
                         fontFamily: ['Arial', 'kaiti SC', 'Kaiti'],
@@ -39,11 +40,11 @@
                     grid : {
                         left : '4%',
                         right : 50,
-                        bottom : '4%',
+                        bottom : 0,
                         top : 30,
                         containLabel : true
                     },
-                    xAxis: {
+                    xAxis: [{
                         type: 'category',
                         boundaryGap: false,
                         data: x,
@@ -53,22 +54,48 @@
                         axisLabel: {
                             interval: x.length - 2
                         },
+                        position: 'bottom',
                     },
-                    yAxis: {
-                        type: 'value',
-                        scale: true,
-                        splitLine: {
-                            show: false
-                        },
-                        interval: ticker.interval,
-                        min: ticker.min,
-                        max: ticker.max,
-                        axisLabel: {
-                            formatter: (value)=>{
-                                return value.toFixed(4)
+                        {
+                            type: 'category',
+                            boundaryGap: false,
+                            data: x,
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                interval: x.length - 2
+                            },
+                            position: 'bottom',
+                        }],
+                    yAxis: [
+                        {
+                            type: 'value',
+                            scale: true,
+                            splitLine: {
+                                show: false
+                            },
+                            interval: ticker.interval,
+                            min: ticker.min,
+                            max: ticker.max,
+                            axisLabel: {
+                                formatter: (value)=>{
+                                    return value.toFixed(2)
+                                }
                             }
-                        }
-                    },
+                        },
+                        {
+                            type: 'value',
+                            scale: true,
+                            splitLine: {
+                                show: false
+                            },
+                            axisLabel: {
+                                formatter: (value)=>{
+                                    return `${value.toFixed(1)}%`
+                                }
+                            }
+                        }],
                     series: [
                         {
                             name: '本组合',
@@ -106,6 +133,23 @@
                                 },
                             },
                         },
+                        {
+                            name: "超额收益(右)",
+                            data: excess,
+                            type: 'line',
+                            areaStyle: {},
+                            yAxisIndex: 1,
+                            itemStyle:{
+                                normal:{
+                                    lineStyle:{
+                                        width:2,
+                                        type:'dashed',
+                                        color: '#E9E9E9'
+                                    },
+                                    color: '#E9E9E9'
+                                },
+                            },
+                        }
                     ]
                 }
                 chart.setOption(options)
