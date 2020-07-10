@@ -3,7 +3,7 @@
         <div class="active-calendar">
             <div class="header">
                 <h6>{{performance.name}}</h6>
-<!--                <p>{{performance.date? performance.date: ''}}</p>-->
+                <!--                <p>{{performance.date? performance.date: ''}}</p>-->
             </div>
             <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
                 <i class="icon icon-calendar calendar-icon"></i>
@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div v-for="(item, i) in formatNumber(row1)" :key="i">
-                <div class="item">
+                <div :class="id===2? i===0?'item2 highlight': 'item2': 'item'">
                     <h4 :style="{color: item.color}">{{item.value}}</h4>
                     <p>{{item.name}}</p>
                 </div>
@@ -108,91 +108,91 @@
 </script>
 
 <style scoped lang="less">
-@import "../../assets/style/portinfo";
-.calendar-icon{
-    position:absolute;
-    cursor: pointer;
-    display: inline;
-    top: -22px;
-    left: 250px;
-    color: white;
-}
+    @import "../../assets/style/portinfo";
+    .calendar-icon{
+        position:absolute;
+        cursor: pointer;
+        display: inline;
+        top: -22px;
+        left: 250px;
+        color: white;
+    }
 
-.selector {
-    .calendar-icon();
-    transform: translate(-40%, 2%);
-}
+    .selector {
+        .calendar-icon();
+        transform: translate(-40%, 2%);
+    }
 
-@media screen and (max-width: 480px) {
-    .simple-describe {
-        border: @red-border;
+    @media screen and (max-width: 480px) {
+        .simple-describe {
+            border: @red-border;
 
-        .header {
-            display: flex;
-            justify-content: space-between;
-            background-color: #CC2220;
+            .header {
+                display: flex;
+                justify-content: space-between;
+                background-color: #CC2220;
 
-            h6 {
-                text-align: left;
-                margin-left: 2%;
-                line-height: 30px;
-                margin-bottom: 0;
-                color: white;
-            }
-
-            p {
-                text-align: right;
-                margin-right: 2%;
-                line-height: 30px;
-                margin-bottom: 10px;
-                font-size: 14px;
-            }
-        }
-
-        .active-calendar{
-            display: inline;
-        }
-
-
-        .popover {
-            display: flex;
-            margin-left: 10px;
-            white-space: nowrap;
-            text-align: left;
-            justify-content: left;
-        }
-
-        .row{
-            display: flex;
-            padding: 0;
-            margin-left: 0;
-            margin-right: 0;
-            text-align: justify;
-            justify-content: space-around;
-
-            .item {
-                width: 80px;
-                display: inline-block;
-                text-align: center;
-                &:hover{
-                    transform: scale(1.3);
+                h6 {
+                    text-align: left;
+                    margin-left: 2%;
+                    line-height: 30px;
+                    margin-bottom: 10px;
+                    color: white;
                 }
 
-                h4 {
-                    text-align: center;
-                    font-size: 16px;
-                }
                 p {
-                    font-size: 12px;
+                    text-align: right;
+                    margin-right: 2%;
+                    line-height: 30px;
+                    margin-bottom: 10px;
+                    font-size: 14px;
                 }
             }
-        }
 
-        .row2 {
-            margin-top: 10px;
-            margin-bottom: 10px;
-            .row();
+            .active-calendar{
+                display: inline;
+            }
+
+
+            .popover {
+                display: flex;
+                margin-left: 10px;
+                white-space: nowrap;
+                text-align: left;
+                justify-content: left;
+            }
+
+            .row{
+                display: flex;
+                padding: 0;
+                margin-left: 0;
+                margin-right: 0;
+                text-align: justify;
+                justify-content: space-around;
+
+                .item {
+                    width: 80px;
+                    display: inline-block;
+                    text-align: center;
+                    &:hover{
+                        transform: scale(1.3);
+                    }
+
+                    h4 {
+                        text-align: center;
+                        font-size: 16px;
+                    }
+                    p {
+                        font-size: 12px;
+                    }
+                }
+            }
+
+            .row2 {
+                margin-top: 10px;
+                margin-bottom: 10px;
+                .row();
+            }
         }
     }
-}
 </style>
