@@ -14,7 +14,7 @@
         </div>
         <div class="row">
             <div v-for="(item, i) in formatNumber(row1)" :key="i">
-                <div class="item">
+                <div :class="id===2? i===0?'item2 highlight': 'item2': 'item'">
                     <h4 :style="{color: item.color}">{{item.value}}</h4>
                     <p>{{item.name}}</p>
                 </div>
