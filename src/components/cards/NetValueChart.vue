@@ -13,8 +13,8 @@
             data: Object,
         },
         methods: {
-            drawNavValue(x, y1, y2, swap, ticker){
-                let excess = y1.map((v, i)=>{return (100*(y1[i] - y2[i])).toFixed(2)})
+            drawNavValue(x, y1, y2, excess, swap, ticker){
+                console.log(excess)
                 let width = window.innerWidth;
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
@@ -68,9 +68,9 @@
                             splitLine: {
                                 show: false
                             },
-                            axisLabel: {
-                                interval: x.length - 2
-                            },
+                            // axisLabel: {
+                            //     interval: x.length - 2
+                            // },
                             axisLine:{
                                 lineStyle:{
                                     color:'#A6A6A6'
@@ -90,7 +90,7 @@
                             max: ticker.max,
                             axisLabel: {
                                 formatter: (value)=>{
-                                    return value.toFixed(2)
+                                    return value.toFixed(4)
                                 }
                             },
                             axisLine:{
@@ -102,12 +102,15 @@
                         {
                             type: 'value',
                             scale: true,
+                            max: ticker.e_max,
+                            min: ticker.e_min,
+                            interval: ticker.e_ticker,
                             splitLine: {
                                 show: false
                             },
                             axisLabel: {
                                 formatter: (value)=>{
-                                    return `${value.toFixed(1)}%`
+                                    return `${value.toFixed(3)}%`
                                 }
                             },
                             axisLine:{
@@ -180,7 +183,7 @@
         },
         mounted(){
             let nav = this.data
-            this.drawNavValue(nav.date, nav.portfolio, nav.benchmark, nav.swap, nav.ticker)
+            this.drawNavValue(nav.date, nav.portfolio, nav.benchmark, nav.excess, nav.swap, nav.ticker)
         }
     }
 </script>
