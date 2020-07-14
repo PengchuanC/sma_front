@@ -14,7 +14,6 @@
         },
         methods: {
             drawNavValue(x, y1, y2, excess, swap, ticker){
-                console.log(excess)
                 let width = window.innerWidth;
                 //    绘制净值图
                 let chart = echarts.init(document.getElementById('net-value-chart'))
@@ -51,12 +50,15 @@
                         splitLine: {
                             show: false
                         },
+                        // axisLabel: {
+                        //     interval: x.length - 2
+                        // },
                         axisLabel: {
-                            interval: x.length - 2
+                            show: false
                         },
                         axisLine:{
                             lineStyle:{
-                                color:'#A6A6A6'
+                                color:'white'
                             }
                         },
                         position: 'bottom',
@@ -69,7 +71,8 @@
                                 show: false
                             },
                             // axisLabel: {
-                            //     interval: x.length - 2
+                            //     interval: x.length - 2,
+                            //     show: false
                             // },
                             axisLine:{
                                 lineStyle:{
@@ -104,7 +107,7 @@
                             scale: true,
                             max: ticker.e_max,
                             min: ticker.e_min,
-                            // interval: ticker.e_ticker,
+                            interval: ticker.e_ticker,
                             splitLine: {
                                 show: false
                             },
