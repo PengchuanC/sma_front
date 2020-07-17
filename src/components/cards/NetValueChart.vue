@@ -113,7 +113,7 @@
                             },
                             axisLabel: {
                                 formatter: (value)=>{
-                                    return `${value.toFixed(3)}%`
+                                    return `${(value*100).toFixed(2)}%`
                                 }
                             },
                             axisLine:{
