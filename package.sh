@@ -2,8 +2,8 @@ echo "打包程序"
 
 yarn build
 
-rm -f fof.zip
+rm -f dist.zip
 
-zip -r fof.zip ./fof
+zip -r dist.zip ./dist
 
-scp fof.zip root@10.170.139.10:/home/web/front/fof
+scp dist.zip root@10.170.129.129:/home/sma/deploy/frontend/
