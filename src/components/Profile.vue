@@ -9,13 +9,20 @@
                 </div>
                 <div class="input-wrapper">
                     <label>
-                        <input class="input-item" v-model="password" type="password" placeholder="登陆密码" />
+                        <input class="input-item" v-model="password" type="password" placeholder="请输原密码" />
                     </label>
                 </div>
-                <div class="no-resign">
-                    <checkbox class="hint" v-model="noResign">7天免登陆</checkbox>
+                <div class="input-wrapper">
+                    <label>
+                        <input class="input-item" v-model="password1" type="password" placeholder="请输入新密码" />
+                    </label>
                 </div>
-                <button @click="login">登陆</button>
+                <div class="input-wrapper">
+                    <label>
+                        <input class="input-item" v-model="password2" type="password" placeholder="请确认新密码" />
+                    </label>
+                </div>
+                <button @click="reset">重置密码</button>
             </div>
             <div class="corp-logo-wrapper">
                 <p class="corp-logo">SMA</p>
@@ -25,45 +32,46 @@
 </template>
 
 <script>
-
-    import {Checkbox} from 'at-ui'
-    import {Token} from "./scripts/utils"
-    import moment from 'moment'
-
     export default {
-        name: "Login",
-        components: {
-            Checkbox
-        },
+        name: "Profile",
         data() {
             return {
                 username: '',
                 password: '',
-                noResign: true,
+                password1: '',
+                password2: ''
             }
         },
-        methods:{
-            login(){
-                Token.setToke('')
-                Token.setLongToken('')
-                Token.setExpireDate('')
-                this.http.post('/auth/', {username: this.username, password: this.password}).then(resp=>{
-                    let data = resp.data
-                    let token = data.access
-                    let tomorrow = moment(new Date()).add(1,'days').format('MMMM Do YYYY, h:mm:ss a')
-                    Token.setToke('Bearer '+ token)
-                    Token.setExpireDate(tomorrow)
-                    if (this.noResign) {
-                        let longToken = data.refresh
-                        Token.setLongToken(longToken)
-                    } else {
-                        localStorage.longToken = null
-                    }
-                    this.$token = "Bear " + token
-                    this.$router.push({name: 'layout'})
-                }).catch((e)=>{
-                    console.log(e.response.statusText)
-                    this.$Message.warning("登陆失败，请检查账户或密码")
+        methods: {
+            reset(){
+                if (this.password1 !== this.password2) {
+                    this.$Message.warning("两次输入密码不一致")
+                }
+                if (this.username === '') {
+                    this.$Message.warning("请输入用户名")
+                }
+                if (this.password === '') {
+                    this.$Message.warning("请输入原始密码")
+                }
+                if (this.password1 === '') {
+                    this.$Message.warning("请输入新密码")
+                }
+                this.http.put('/manage/reset/',
+                    {'username': this.username, 'password': this.password, 'password1': this.password1, 'password2': this.password2}
+                    ).then(resp=>{
+                        if (resp.status === 200) {
+                            let data = resp.data
+                            let code = data.code
+                            let msg = data.msg
+                            if (code === 0) {
+                                this.$Message.info(msg)
+                                this.$router.push({'name': 'login'})
+                            }else{
+                                this.$Message.error(msg)
+                            }
+                        }else{
+                            this.$Message.error(resp.status)
+                        }
                 })
             }
         }
@@ -122,7 +130,7 @@
             .input-item {
                 background: none;
                 display: block;
-                margin: 20px auto;
+                margin: 15px auto;
                 text-align: center;
                 border: 2px solid #3498db;
                 /*padding: 14px 10px;*/
@@ -154,7 +162,7 @@
                 display: block;
                 margin: 20px auto;
                 text-align: center;
-                border: 2px solid #2ecc71;
+                border: 2px solid #C00000;
                 padding: 0 24px;
                 outline: none;
                 color: white;
@@ -164,7 +172,7 @@
                 cursor: pointer;
 
                 &:hover {
-                    background: #2ecc71;
+                    background: #C00000;
                 }
             }
         }
@@ -188,3 +196,4 @@
         }
     }
 </style>
+

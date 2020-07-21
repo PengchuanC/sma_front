@@ -40,13 +40,18 @@ export default new Router({
                     path: '/hello',
                     name: 'hello',
                     component: ()=>import('@/components/HelloWorld')
-                },
+                }
             ]
         },
         {
             path: '/login',
             name: 'login',
             component: ()=>import('@/components/Login')
+        },
+        {
+            path: '/reset',
+            name: 'reset',
+            component: ()=>import('@/components/Profile')
         },
         {
             path: '/home',
@@ -61,6 +66,6 @@ export default new Router({
         {
             path: '*',
             redirect: '/'
-        }
+        },
     ]
 })
