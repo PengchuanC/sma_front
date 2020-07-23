@@ -40,6 +40,7 @@ async function addToken(config) {
             }).catch((e) => {
                 Token.setToke('')
                 Token.setLongToken('')
+                Token.setExpireDate('')
                 reject(e)
             })
         });
