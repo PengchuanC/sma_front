@@ -89,10 +89,10 @@
 
     .layout:before{
         position: absolute;
-        background: url('../assets/flower.jpg') no-repeat;
+        background: url('../assets/modern.png') no-repeat;
         background-size:cover;
         z-index: -1;
-        filter: blur(5px);
+        /*filter: blur(5px);*/
         content: '';
         top: 0;
         bottom: 0;
