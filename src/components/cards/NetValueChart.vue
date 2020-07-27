@@ -146,17 +146,11 @@
                             type: 'line',
                             data: y1,
                             markPoint: {
-                                symbol: 'circle',
-                                // symbolSize: width >= 480 ? function (value) {
-                                //     return [42, (value.length/3).toFixed(0)*16]
-                                // }: [30, 20],
+                                symbol: 'diamond',
                                 label: {
                                     show: false
                                 },
-                                symbolSize: 6,
-                                // symbolOffset: [0, -20],
-                                // fontFamily: 'Kaiti',
-                                // fontSize: width >= 480 ? 6: 8,
+                                symbolSize: 8,
                                 data: swap.slice(1, swap.length).map(x=>{
                                     return {
                                         name: x.x, value: x.value.join('\n'), xAxis: x.x, yAxis: x.y, height: x.code,
