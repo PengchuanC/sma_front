@@ -146,14 +146,14 @@
                             type: 'line',
                             data: y1,
                             markPoint: {
-                                symbol: 'circle',
+                                symbol: 'diamond',
                                 // symbolSize: width >= 480 ? function (value) {
                                 //     return [42, (value.length/3).toFixed(0)*16]
                                 // }: [30, 20],
                                 label: {
                                     show: false
                                 },
-                                symbolSize: 6,
+                                symbolSize: 8,
                                 // symbolOffset: [0, -20],
                                 // fontFamily: 'Kaiti',
                                 // fontSize: width >= 480 ? 6: 8,
