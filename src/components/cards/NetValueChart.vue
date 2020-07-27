@@ -145,6 +145,8 @@
                             name: '本组合',
                             type: 'line',
                             data: y1,
+                            symbol: 'arrow',
+                            symbolSize: 10,
                             markPoint: {
                                 symbol: 'diamond',
                                 label: {
