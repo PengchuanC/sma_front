@@ -145,7 +145,7 @@
                             name: '本组合',
                             type: 'line',
                             data: y1,
-                            symbolSize: 4,
+                            symbolSize: 3,
                             markPoint: {
                                 symbol: 'diamond',
                                 // symbolSize: width >= 480 ? function (value) {
@@ -170,7 +170,7 @@
                             name: '基准',
                             type: 'line',
                             data: y2,
-                            symbolSize: 4,
+                            symbolSize: 3,
                             // symbol: 'none',
                             itemStyle:{
                                 normal:{
