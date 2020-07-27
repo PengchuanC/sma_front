@@ -32,8 +32,26 @@
                     },
                     tooltip: {
                         trigger: 'item',
+                        backgroundColor: '#CB2220',
                         axisPointer: {
-                            show: true
+                            show: true,
+                            snap: true,
+                        },
+                        formatter: function (params) {
+                            if (params.seriesIndex !== 0) {
+                                return `${params.name}<br>${params.data}`
+                            }
+                            let idx
+                            swap.forEach(x=>{
+                                if (x.x === params.name) {
+                                    idx = swap.indexOf(x)
+                                }
+                            })
+                            if (!!idx === true){
+                                return swap[idx].value.join('<br>')
+                            }else{
+                                return `${params.name}<br>${params.data}`
+                            }
                         }
                     },
                     grid : {
@@ -128,13 +146,17 @@
                             type: 'line',
                             data: y1,
                             markPoint: {
-                                symbol: 'rect',
-                                symbolSize: width >= 480 ? function (value) {
-                                    return [42, (value.length/3).toFixed(0)*16]
-                                }: [30, 20],
-                                symbolOffset: [0, -20],
-                                fontFamily: 'Kaiti',
-                                fontSize: width >= 480 ? 6: 8,
+                                symbol: 'circle',
+                                // symbolSize: width >= 480 ? function (value) {
+                                //     return [42, (value.length/3).toFixed(0)*16]
+                                // }: [30, 20],
+                                label: {
+                                    show: false
+                                },
+                                symbolSize: 6,
+                                // symbolOffset: [0, -20],
+                                // fontFamily: 'Kaiti',
+                                // fontSize: width >= 480 ? 6: 8,
                                 data: swap.slice(1, swap.length).map(x=>{
                                     return {
                                         name: x.x, value: x.value.join('\n'), xAxis: x.x, yAxis: x.y, height: x.code,
