@@ -145,8 +145,7 @@
                             name: '本组合',
                             type: 'line',
                             data: y1,
-                            symbol: 'arrow',
-                            symbolSize: 10,
+                            symbolSize: 3,
                             markPoint: {
                                 symbol: 'diamond',
                                 label: {
@@ -165,7 +164,7 @@
                             name: '基准',
                             type: 'line',
                             data: y2,
-                            // symbol: 'none',
+                            symbolSize: 3,
                             itemStyle:{
                                 normal:{
                                     lineStyle:{
