@@ -1,6 +1,6 @@
 <template>
     <div class="layout-swap">
-        <div class="date" v-for="(h, i) in history" :key="i" v-show="!more || i < showRowNum">
+        <div class="date" v-for="(h, i) in history.slice(0, 5)" :key="i" v-show="!more || i < showRowNum">
             <i class="icon icon-circle"></i> <span>{{h.date}}</span>
             <ul class="swap">
                 <li v-for="(r, i) in h.history" :key="i" class="item">
