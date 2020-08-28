@@ -36,11 +36,6 @@ export default new Router({
                         keepAlive: true
                     }
                 },
-                {
-                    path: '/hello',
-                    name: 'hello',
-                    component: ()=>import('@/components/HelloWorld')
-                }
             ]
         },
         {
@@ -52,11 +47,6 @@ export default new Router({
             path: '/reset',
             name: 'reset',
             component: ()=>import('@/components/Profile')
-        },
-        {
-            path: '/home',
-            name: 'home',
-            component: ()=>import('@/components/Nav')
         },
         {
             path: '/card',
