@@ -36,22 +36,12 @@ export default new Router({
                         keepAlive: true
                     }
                 },
-                {
-                    path: '/hello',
-                    name: 'hello',
-                    component: ()=>import('@/components/HelloWorld')
-                },
             ]
         },
         {
             path: '/login',
             name: 'login',
             component: ()=>import('@/components/Login')
-        },
-        {
-            path: '/home',
-            name: 'home',
-            component: ()=>import('@/components/Nav')
         },
         {
             path: '/card',
