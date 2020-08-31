@@ -35,6 +35,7 @@ import {Popover as AtPopover} from 'at-ui'
 import Calendar from "../common/calendar"
 import numeral from 'numeral'
 numeral.zeroFormat('-')
+
 export default {
   name: "SimpleDescribe",
   props: {

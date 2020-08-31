@@ -216,8 +216,6 @@
         mounted(){
             // 携宁无法将数据携带到header中，只能作为url param
             let auth = this.$route.query['signmsg']
-            console.log(auth)
-            // auth = Base64.encode(auth)
             Token.setIdentify(auth)
             this.port_id = this.$route.params.port_id
             if (this.port_id){
