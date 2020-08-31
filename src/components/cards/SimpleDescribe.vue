@@ -59,7 +59,7 @@
                 if (this.id===1){
                     return row.map(x=>{
                         if (x.value < 1000 && x.value > -1000){
-                            return {name:x.name, value: x.value===0? '-':x.value}
+                            return {name:x.name, value: x.value===0? '-':x.value.toFixed(2)}
                         }
                         return {
                             name: x.name,
