@@ -3,7 +3,6 @@
         <div class="active-calendar">
             <div class="header">
                 <h6>{{performance.name}}</h6>
-                <!--                <p>{{performance.date? performance.date: ''}}</p>-->
             </div>
             <AtPopover trigger="click" placement="bottom" class="popover" v-if="id===2">
                 <i class="icon icon-calendar calendar-icon"></i>
@@ -13,7 +12,7 @@
             </AtPopover>
         </div>
         <div class="row">
-            <div v-for="(item, i) in formatNumber(row1)" :key="i">
+            <div v-for="(item, i) in formatNumber(row1)" :key="'row1'+i">
                 <div :class="id===2? i===0?'item2 highlight': 'item2': 'item'">
                     <h4 :style="{color: item.color}">{{item.value}}</h4>
                     <p>{{item.name}}</p>
@@ -21,7 +20,7 @@
             </div>
         </div>
         <div class="row2">
-            <div v-for="(item, i) in formatNumber(row2)" :key="i">
+            <div v-for="(item, i) in formatNumber(row2)" :key="'row2'+i">
                 <div class="item">
                     <h4>{{item.value}}</h4>
                     <p>{{item.name}}</p>
@@ -33,7 +32,9 @@
 
 <script>
     import {Popover as AtPopover} from 'at-ui'
-    import Calendar from "../common/calendar";
+    import Calendar from "../common/calendar"
+    import numeral from 'numeral'
+    numeral.zeroFormat('-')
 
     export default {
         name: "SimpleDescribe",
@@ -59,20 +60,17 @@
                 if (this.id===1){
                     return row.map(x=>{
                         if (x.value < 1000 && x.value > -1000){
-                            return {name:x.name, value: x.value===0? '-':x.value}
+                            return {name:x.name, value: x.value===0? '-':x.value.toFixed(4)}
                         }
                         return {
                             name: x.name,
-                            value: x.value.toString().replace(/\d{1,3}(?=(\d{3})+(\.\d*)?$)/g, '$&,')
+                            value: numeral(x.value).format('0,00')
                         }
                     })
                 }
                 return row.map(x=>{
-                    if (x.value === 0){
-                        return {name: x.name, value: '-'}
-                    }
                     if (x.name === '夏普比') {
-                        return x
+                        return {name: x.name, value: numeral(x.value).format('0.00')}
                     }
                     if (['累计收益率', '当日收益率'].includes(x.name)) {
                         let color = x.value > 0? 'red': 'green'
@@ -82,10 +80,10 @@
                 })
             },
             formatPercent(num){
-                if (num===0){
-                    return '-'
-                }
-                return `${num}%`
+                // if (num===0){
+                //     return '-'
+                // }
+                return numeral(num/100).format('0.00%')
             },
             select(e){
                 e = new Date(e[0], e[1]-1, e[2])

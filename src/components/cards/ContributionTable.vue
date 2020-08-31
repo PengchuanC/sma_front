@@ -6,7 +6,7 @@
                 <th class="th2">基金简称</th>
                 <th class="th3">累计收益（元）</th>
             </tr>
-            <tr v-for="(row, i) in earnings" :key="i" :class="row[0]%2===0? '': 'light'">
+            <tr v-for="(row, i) in earnings" :key="'row'+i" :class="row[0]%2===0? '': 'light'">
                 <td class="td1">{{row[0]? row[0]: '-'}}</td>
                 <td class="td2" :class="row[0]? '':'bold'">{{row[1]}}</td>
                 <td class="td3" :class="row[0]? '':'bold'" :style="row[2] >= 0?{color: 'red'}: {color: 'green'}">{{row[2].toFixed(2)}}</td>
