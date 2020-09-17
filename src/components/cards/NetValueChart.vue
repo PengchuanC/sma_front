@@ -57,7 +57,7 @@
                     grid : {
                         left : '4%',
                         right : 50,
-                        bottom : 0,
+                        bottom : 10,
                         top : 30,
                         containLabel : true
                     },
@@ -68,37 +68,35 @@
                         splitLine: {
                             show: false
                         },
-                        // axisLabel: {
-                        //     interval: x.length - 2
-                        // },
                         axisLabel: {
-                            show: false
+                            show: true
                         },
                         axisLine:{
                             lineStyle:{
-                                color:'white'
+                                color:'#A6A6A6'
                             }
                         },
                         position: 'bottom',
                     },
-                        {
-                            type: 'category',
-                            boundaryGap: false,
-                            data: x,
-                            splitLine: {
-                                show: false
-                            },
-                            // axisLabel: {
-                            //     interval: x.length - 2,
-                            //     show: false
-                            // },
-                            axisLine:{
-                                lineStyle:{
-                                    color:'#A6A6A6'
-                                }
-                            },
-                            position: 'bottom',
-                        }],
+                        // {
+                        //     type: 'category',
+                        //     boundaryGap: false,
+                        //     data: x,
+                        //     splitLine: {
+                        //         show: false
+                        //     },
+                        //     // axisLabel: {
+                        //     //     interval: x.length - 2,
+                        //     //     show: false
+                        //     // },
+                        //     axisLine:{
+                        //         lineStyle:{
+                        //             color:'#A6A6A6'
+                        //         }
+                        //     },
+                        //     position: 'bottom',
+                        // }
+                        ],
                     yAxis: [
                         {
                             type: 'value',
@@ -120,26 +118,27 @@
                                 }
                             },
                         },
-                        {
-                            type: 'value',
-                            scale: true,
-                            max: ticker.e_max,
-                            min: ticker.e_min,
-                            interval: ticker.e_ticker,
-                            splitLine: {
-                                show: false
-                            },
-                            axisLabel: {
-                                formatter: (value)=>{
-                                    return `${(value*100).toFixed(2)}%`
-                                }
-                            },
-                            axisLine:{
-                                lineStyle:{
-                                    color:'#A6A6A6'
-                                }
-                            },
-                        }],
+                        // {
+                        //     type: 'value',
+                        //     scale: true,
+                        //     max: ticker.e_max,
+                        //     min: ticker.e_min,
+                        //     interval: ticker.e_ticker,
+                        //     splitLine: {
+                        //         show: false
+                        //     },
+                        //     axisLabel: {
+                        //         formatter: (value)=>{
+                        //             return `${(value*100).toFixed(2)}%`
+                        //         }
+                        //     },
+                        //     axisLine:{
+                        //         lineStyle:{
+                        //             color:'#A6A6A6'
+                        //         }
+                        //     },
+                        // }
+                        ],
                     series: [
                         {
                             name: '本组合',
@@ -166,40 +165,40 @@
                                 })
                             }
                         },
-                        {
-                            name: '基准',
-                            type: 'line',
-                            data: y2,
-                            symbolSize: 3,
-                            // symbol: 'none',
-                            itemStyle:{
-                                normal:{
-                                    lineStyle:{
-                                        width:2,
-                                        type:'dashed',
-                                        color: '#D18484'
-                                    },
-                                    color: '#D18484'
-                                },
-                            },
-                        },
-                        {
-                            name: "超额收益(右)",
-                            data: excess,
-                            type: 'line',
-                            areaStyle: {},
-                            yAxisIndex: 1,
-                            itemStyle:{
-                                normal:{
-                                    lineStyle:{
-                                        width:2,
-                                        type:'dashed',
-                                        color: '#E9E9E9'
-                                    },
-                                    color: '#E9E9E9'
-                                },
-                            },
-                        }
+                        // {
+                        //     name: '基准',
+                        //     type: 'line',
+                        //     data: y2,
+                        //     symbolSize: 3,
+                        //     // symbol: 'none',
+                        //     itemStyle:{
+                        //         normal:{
+                        //             lineStyle:{
+                        //                 width:2,
+                        //                 type:'dashed',
+                        //                 color: '#D18484'
+                        //             },
+                        //             color: '#D18484'
+                        //         },
+                        //     },
+                        // },
+                        // {
+                        //     name: "超额收益(右)",
+                        //     data: excess,
+                        //     type: 'line',
+                        //     areaStyle: {},
+                        //     yAxisIndex: 1,
+                        //     itemStyle:{
+                        //         normal:{
+                        //             lineStyle:{
+                        //                 width:2,
+                        //                 type:'dashed',
+                        //                 color: '#E9E9E9'
+                        //             },
+                        //             color: '#E9E9E9'
+                        //         },
+                        //     },
+                        // }
                     ]
                 }
                 chart.setOption(options)

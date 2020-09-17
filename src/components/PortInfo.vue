@@ -13,7 +13,6 @@
             <div class="card2"><SimpleDescribe :performance="performance2" :id="2" @selectDate="changeDate" v-if="netValueDataOk" /></div>
         </div>
         <NetValueChart :data="netValueChart" v-if="netValueDataOk"/>
-        <footer>注：{{portinfo.base}}</footer>
         <div>
             <button @click="changePeriod(1)" :class="month===1?'left active': 'left'">近1月</button>
             <button @click="changePeriod(3)" :class="month===3?'active': ''">近3月</button>
@@ -38,7 +37,7 @@
                 <hr>
                 <ContributionChart :data="contribute" v-if="earningsOk" />
                 <ContributionTable :data="earnings" v-if="earningsOk" />
-                <p class="note">注：上述收益中未展示资产估值增加和利息收入之外的内容。</p>
+                <p class="note">注：上述收益中未展示资管计划层面费用。</p>
             </div>
         </div>
         <p class="disclaimer">

@@ -2,8 +2,8 @@ import axios from 'axios'
 import {Token} from "./utils"
 import moment from "moment"
 
-const url = "https://sma.nomuraoi-sec.com/api/sma/"
-// const url = "http://0.0.0.0:8000/api/sma/"
+// const url = "https://sma.nomuraoi-sec.com/api/sma/"
+const url = "http://0.0.0.0:8000/api/sma/"
 // const url = "http://10.170.129.129/api/sma/"
 const refreshUrl = url + 'token/refresh/'
 
