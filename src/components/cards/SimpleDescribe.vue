@@ -59,7 +59,7 @@ export default {
     formatNumber(row){
       if (this.id===1){
         return row.map(x=>{
-          if (x.value < 1000 && x.value > -1000){
+          if (x.value < 2 && x.value > 0){
             return {name:x.name, value: x.value===0? '-':numeral(x.value).format('0.0000')}
           }
           return {

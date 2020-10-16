@@ -37,7 +37,7 @@
                 <hr>
                 <ContributionChart :data="contribute" v-if="earningsOk" />
                 <ContributionTable :data="earnings" v-if="earningsOk" />
-                <p class="note">注：上述收益中未展示资管计划层面费用。</p>
+                <p class="note">注：成立以来总收益扣除资管计划层面费用，与单只基金损益之和可能存在差异。</p>
             </div>
         </div>
         <p class="disclaimer">
