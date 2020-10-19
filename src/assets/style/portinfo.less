@@ -20,23 +20,20 @@
   }
 
   .banner {
+    display: inline-flex;
     height: 100px;
     width: 100%;
     padding: 1px;
-    .image {
-      height: 100px;
-      width: 100%;
+
+    .logo-cut {
+      height: 80px;
+      width: 200px;
+      margin: 10px 25px 10px 10px;
     }
 
-    .logo {
-      z-index: 1;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 20vw;
-      height: 15vw;
-      max-width: 150px;
-      max-height: 100px;
+    .image {
+      height: 100px;
+      width: calc(100% - 235px);
     }
   }
 
@@ -50,7 +47,7 @@
     position: absolute;
     z-index: 1;
     top: 60px;
-    left: 25%;
+    left: 45%;
     overflow: hidden;
     text-overflow:ellipsis;
     white-space: nowrap;
@@ -295,23 +292,20 @@
   }
 
   .banner {
-    height: 100px;
+    display: inline-flex;
+    height: 80px;
     width: 100%;
     padding: 1px;
-    .image {
-      height: 100px;
-      width: 100%;
+
+    .logo-cut {
+      height: 60px;
+      width: 100px;
+      margin: 10px 10px 10px 10px;
     }
 
-    .logo {
-      z-index: 1;
-      position: absolute;
-      top: 0;
-      right: 0;
-      width: 20vw;
-      height: 15vw;
-      max-width: 150px;
-      max-height: 100px;
+    .image {
+      height: 80px;
+      width: calc(100% - 120px);
     }
   }
 
@@ -324,8 +318,10 @@
   .page-title {
     position: absolute;
     z-index: 1;
-    top: 60px;
-    left: 25%;
+    top: 40px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
 
     h3 {
       color: white;
